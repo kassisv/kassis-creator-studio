@@ -1,244 +1,71 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kassis Creator Studio</title>
 <style>
-:root{--bg:#f5f6fa;--panel:#fff;--text:#191b24;--muted:#737789;--line:#e7e8ef;--accent:#7657e8;--accent2:#eee9ff;--green:#18875b;--orange:#b76b12;--red:#c33d55;--shadow:0 8px 26px #24243a0a}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:245px 1fr;min-height:100vh}
-.sidebar{background:#fff;border-right:1px solid var(--line);padding:24px 16px;display:flex;flex-direction:column;gap:26px}
-.brand{display:flex;align-items:center;gap:10px;padding:0 8px}.brandmark{width:36px;height:36px;border-radius:12px;background:var(--accent);color:white;display:grid;place-items:center;font-weight:800;font-size:17px}.brand h1{font-size:15px;margin:0}.brand small{display:block;color:var(--muted);font-size:11px}
-.navgroup{display:grid;gap:5px}.navlabel{font-size:10px;font-weight:800;color:#a0a2b0;letter-spacing:.13em;padding:0 12px;margin-bottom:5px}.navbtn{border:0;background:transparent;text-align:left;padding:11px 12px;border-radius:10px;color:#5d6070;display:flex;align-items:center;gap:12px}.navbtn span{width:18px;text-align:center}.navbtn.active,.navbtn:hover{background:var(--accent2);color:var(--accent);font-weight:700}.sidebarfoot{margin-top:auto;border-top:1px solid var(--line);padding:16px 8px 0;color:var(--muted);font-size:12px}
-.main{min-width:0}.topbar{height:76px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 32px;gap:14px}.crumb{color:var(--muted);font-size:12px}.topright{display:flex;align-items:center;gap:12px}.avatar{width:34px;height:34px;border-radius:50%;background:#e9e3ff;color:#5e42c5;display:grid;place-items:center;font-weight:800}.status{display:inline-flex;align-items:center;gap:6px;background:#e9f8f0;color:var(--green);padding:5px 9px;border-radius:99px;font-size:11px;font-weight:700}.status:before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
-.content{padding:30px 32px;max-width:1500px;margin:auto}.pagehead{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:24px}.pagehead h2{margin:0 0 6px;font-size:27px;letter-spacing:-.04em}.pagehead p{margin:0;color:var(--muted)}.actions{display:flex;gap:8px;flex-wrap:wrap}
-.btn{border:1px solid var(--line);background:white;color:var(--text);border-radius:10px;padding:10px 14px;font-weight:650}.btn.primary{background:var(--accent);color:#fff;border-color:var(--accent)}.btn:hover{filter:brightness(.98)}.grid{display:grid;gap:16px}.stats{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:20px}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);min-width:0}.statlabel{color:var(--muted);font-size:12px}.statvalue{font-size:27px;font-weight:800;letter-spacing:-.04em;margin:7px 0 2px}.statnote{font-size:11px;color:var(--muted)}.sectionhead{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:13px}.sectionhead h3{margin:0;font-size:15px}.sectionhead small{color:var(--muted)}.twocol{grid-template-columns:minmax(0,1.35fr) minmax(290px,.85fr)}.idea-list{display:grid;gap:10px}.idea{border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr auto;gap:12px}.idea h4{margin:7px 0 5px;font-size:14px}.idea p{margin:0;color:var(--muted);font-size:12px}.tag{display:inline-block;padding:4px 7px;border-radius:6px;background:#f1efff;color:#6548ce;font-size:10px;font-weight:800}.tag.green{background:#e7f7ef;color:#18875b}.tag.orange{background:#fff2df;color:#a9660e}.score{font-weight:800;font-size:13px;text-align:right}.score small{display:block;color:var(--muted);font-weight:500;font-size:10px}.ideabtns{display:flex;gap:6px;margin-top:10px}.mini{border:1px solid var(--line);background:white;border-radius:7px;padding:6px 9px;font-size:11px}.mini.primary{color:var(--accent);background:var(--accent2);border-color:#e2d9ff}.task{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid var(--line)}.task:last-child{border-bottom:0}.task input{accent-color:var(--accent);margin-top:4px}.task strong{display:block;font-size:12px}.task small{color:var(--muted)}.timeline{display:grid;gap:0}.timeitem{display:grid;grid-template-columns:56px 12px 1fr;gap:10px;min-height:62px}.time{font-size:11px;color:var(--muted);padding-top:3px}.dotline{position:relative;display:flex;justify-content:center}.dotline:before{content:"";position:absolute;top:7px;bottom:-4px;width:1px;background:var(--line)}.dot{z-index:1;width:9px;height:9px;border-radius:50%;background:var(--accent);border:2px solid white;box-shadow:0 0 0 1px #d8d0ff;margin-top:5px}.event strong{font-size:12px;display:block}.event small{color:var(--muted)}.bar{height:7px;background:#eeeef5;border-radius:99px;overflow:hidden;margin-top:9px}.bar span{display:block;height:100%;background:var(--accent);border-radius:99px}.view{display:none}.view.active{display:block}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:12px 8px;border-bottom:1px solid var(--line);font-size:12px}.table th{color:var(--muted);font-weight:650}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;font-weight:700}.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:9px;padding:10px;background:white;width:100%;color:var(--text)}.field textarea{min-height:80px;resize:vertical}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.empty{color:var(--muted);font-size:12px;padding:22px;text-align:center}.notice{background:#fff8e9;border:1px solid #f4dfb4;color:#825719;border-radius:12px;padding:12px 14px;font-size:12px;margin-bottom:18px}.muted{color:var(--muted)}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 9px;font-size:11px;color:var(--muted)}.trendrow{display:grid;grid-template-columns:1fr auto;gap:10px;padding:13px 0;border-bottom:1px solid var(--line)}.trendrow:last-child{border:0}.trendrow strong{font-size:12px;display:block}.trendrow small{color:var(--muted)}.trendscore{font-size:12px;font-weight:800;color:var(--green)}.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}.day{background:white;border:1px solid var(--line);border-radius:12px;padding:11px;min-height:116px}.day strong{display:block;font-size:12px}.day small{color:var(--muted)}.day .block{margin-top:10px;background:var(--accent2);color:#6245c9;border-radius:7px;padding:7px;font-size:10px}.day .block.live{background:#e6f7ee;color:#197b54}.toast{position:fixed;bottom:20px;right:20px;background:#242331;color:white;padding:12px 16px;border-radius:10px;box-shadow:var(--shadow);display:none;z-index:9}.mobilemenu{display:none}
-@media(max-width:1000px){.app{grid-template-columns:205px 1fr}.content{padding:24px 20px}.topbar{padding:0 20px}.stats{grid-template-columns:repeat(2,1fr)}.twocol{grid-template-columns:1fr}}
-@media(max-width:700px){.app{display:block}.sidebar{display:none;position:fixed;z-index:10;inset:0 auto 0 0;width:260px;box-shadow:0 0 0 100vmax #15152266}.sidebar.open{display:flex}.topbar{height:64px;padding:0 15px}.mobilemenu{display:inline-block}.topright .status{display:none}.content{padding:22px 14px}.pagehead{display:block}.pagehead h2{font-size:23px}.pagehead .actions{margin-top:15px}.stats{gap:10px}.card{padding:14px}.statvalue{font-size:23px}.week{grid-template-columns:repeat(2,minmax(0,1fr))}.formgrid{grid-template-columns:1fr}.idea{grid-template-columns:1fr}.score{text-align:left}.topright{gap:8px}}
-</style>
-</head>
-<body>
-<div class="app">
-<aside class="sidebar" id="sidebar">
-  <div class="brand"><div class="brandmark">K</div><div><h1>Kassis Creator Studio</h1><small>Creator workspace</small></div></div>
-  <div class="navgroup">
-    <div class="navlabel">ESPACE DE TRAVAIL</div>
-    <button class="navbtn active" data-view="dashboard"><span>⌂</span> Tableau de bord</button>
-    <button class="navbtn" data-view="ideas"><span>✦</span> Laboratoire d'idées</button>
-    <button class="navbtn" data-view="trends"><span>◉</span> Radar des tendances</button>
-    <button class="navbtn" data-view="calendar"><span>▦</span> Calendrier</button>
-    <button class="navbtn" data-view="tasks"><span>✓</span> Production & tâches</button>
-    <button class="navbtn" data-view="analytics"><span>↗</span> Performances</button>
-  </div>
-  <div class="navgroup">
-    <div class="navlabel">CONFIGURATION</div>
-    <button class="navbtn" data-view="team"><span>♧</span> Équipe & accès</button>
-    <button class="navbtn" data-view="settings"><span>⚙</span> Paramètres</button>
-  </div>
-  <div class="sidebarfoot">Prototype V0.1 · Données locales<br><br>Les connexions externes ne sont pas encore configurées.</div>
-</aside>
-<main class="main">
-  <header class="topbar">
-    <div style="display:flex;align-items:center;gap:12px"><button class="btn mobilemenu" id="menuBtn" aria-label="Ouvrir le menu">☰</button><div><div class="crumb">KASSIS CREATOR STUDIO / <span id="crumb">TABLEAU DE BORD</span></div><strong id="topTitle">Ton espace créateur</strong></div></div>
-    <div class="topright"><span class="status">Mode prototype</span><div class="avatar" title="Profil">K</div></div>
-  </header>
-  <div class="content">
-    <div class="notice"><strong>Prototype local :</strong> les données que tu ajoutes sont enregistrées dans ce navigateur. La connexion sécurisée, les comptes du staff, les collectes automatiques et les données en direct seront activés après le déploiement du backend.</div>
-
-    <section class="view active" id="view-dashboard">
-      <div class="pagehead"><div><h2>Bonjour Kassis 👋</h2><p>Ton espace de travail pour créer mieux, plus régulièrement et avec une vraie stratégie.</p></div><div class="actions"><button class="btn" id="todayBtn">Aujourd'hui</button><button class="btn primary" data-goto="ideas">+ Ajouter une idée</button></div></div>
-      <div class="grid stats">
-        <div class="card"><div class="statlabel">Idées prêtes aujourd'hui</div><div class="statvalue" id="statIdeas">5</div><div class="statnote">2 IRL · 3 gaming</div></div>
-        <div class="card"><div class="statlabel">Tâches terminées</div><div class="statvalue" id="statTasks">0/5</div><div class="statnote">Progression de la journée</div></div>
-        <div class="card"><div class="statlabel">Vidéos publiées cette semaine</div><div class="statvalue" id="statPublished">0</div><div class="statnote">À compléter après publication</div></div>
-        <div class="card"><div class="statlabel">Prochaine session live</div><div class="statvalue" style="font-size:22px" id="nextLive">15:00</div><div class="statnote" id="nextLiveNote">Planning à confirmer</div></div>
-      </div>
-      <div class="grid twocol">
-        <div class="card"><div class="sectionhead"><h3>Les idées du jour</h3><small>Exemples de concepts · à valider</small></div><div class="idea-list" id="dashboardIdeas"></div><button class="btn" style="width:100%;margin-top:12px" data-goto="ideas">Voir toutes les idées</button></div>
-        <div class="grid" style="align-content:start">
-          <div class="card"><div class="sectionhead"><h3>Priorités du jour</h3><small id="taskProgress">0 %</small></div><div id="dashboardTasks"></div><div class="bar"><span id="progressBar" style="width:0%"></span></div></div>
-          <div class="card"><div class="sectionhead"><h3>Cette semaine</h3><span class="pill">Planning proposé</span></div><div class="timeline" id="dashboardTimeline"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="view" id="view-ideas">
-      <div class="pagehead"><div><h2>Laboratoire d'idées</h2><p>Des concepts à transformer en vidéos, adaptés à ton univers et à tes contraintes.</p></div><div class="actions"><button class="btn primary" id="newIdeaBtn">+ Créer une idée</button></div></div>
-      <div class="notice">Les concepts affichés sont des exemples éditoriaux pour tester le workflow. Ils ne sont pas présentés comme des tendances vérifiées ni comme des prédictions de viralité.</div>
-      <div class="grid stats">
-        <div class="card"><div class="statlabel">Concepts en attente</div><div class="statvalue" id="ideaPending">5</div></div>
-        <div class="card"><div class="statlabel">À tourner</div><div class="statvalue" id="ideaShoot">0</div></div>
-        <div class="card"><div class="statlabel">En montage</div><div class="statvalue" id="ideaEdit">0</div></div>
-        <div class="card"><div class="statlabel">Prêts à publier</div><div class="statvalue" id="ideaReady">0</div></div>
-      </div>
-      <div class="card"><div class="sectionhead"><h3>Ta sélection de concepts</h3><select id="ideaFilter" style="border:1px solid var(--line);padding:7px;border-radius:8px"><option value="all">Toutes les idées</option><option value="IRL">IRL</option><option value="Gaming">Gaming</option></select></div><div class="idea-list" id="allIdeas"></div></div>
-    </section>
-
-    <section class="view" id="view-trends">
-      <div class="pagehead"><div><h2>Radar des tendances</h2><p>Repérer les formats prometteurs, vérifier les sources et adapter les idées à Kassis.</p></div><div class="actions"><button class="btn" id="addSourceBtn">+ Ajouter une source</button><button class="btn primary" id="refreshTrends">Actualiser les sources</button></div></div>
-      <div class="notice">Aucune collecte automatique n'est active dans cette version. Les éléments ci-dessous décrivent la méthode de classement et les sources à connecter ; ils ne représentent pas des données live.</div>
-      <div class="grid twocol">
-        <div class="card"><div class="sectionhead"><h3>Signaux à surveiller</h3><span class="pill">Méthode de classement</span></div>
-          <div class="trendrow"><div><strong>Accélération des vues</strong><small>Comparer la progression récente, si la donnée est disponible.</small></div><div class="trendscore">Poids fort</div></div>
-          <div class="trendrow"><div><strong>Fraîcheur du format</strong><small>Favoriser les tendances encore en progression.</small></div><div class="trendscore">Poids fort</div></div>
-          <div class="trendrow"><div><strong>Adaptation à ton univers</strong><small>Humour naturel, rage, VALORANT et concepts maison.</small></div><div class="trendscore">Poids fort</div></div>
-          <div class="trendrow"><div><strong>Facilité de production</strong><small>Tourner chez toi, sans matériel ou dépense importante.</small></div><div class="trendscore">Poids moyen</div></div>
-          <div class="trendrow"><div><strong>Répétabilité</strong><small>Peut-on faire une version personnelle et une suite ?</small></div><div class="trendscore">Poids moyen</div></div>
-        </div>
-        <div class="card"><div class="sectionhead"><h3>Sources à connecter</h3><small>État de préparation</small></div><div id="sourcesList"></div></div>
-      </div>
-      <div class="card" style="margin-top:16px"><div class="sectionhead"><h3>Sources ajoutées manuellement</h3><small id="sourceCount">0 source</small></div><div id="manualSources"></div></div>
-    </section>
-
-    <section class="view" id="view-calendar">
-      <div class="pagehead"><div><h2>Calendrier de production</h2><p>Les lives sont fixes ; la production s'adapte à ton temps disponible.</p></div><div class="actions"><button class="btn primary" id="addTaskFromCal">+ Ajouter une tâche</button></div></div>
-      <div class="notice">Planning initial proposé : ajuste les créneaux selon tes obligations réelles. Les horaires de publication sont des suggestions, pas des heures de performance garanties.</div>
-      <div class="card"><div class="sectionhead"><h3>Semaine type</h3><span class="pill">Fuseau horaire local</span></div><div class="week" id="weekGrid"></div></div>
-      <div class="card" style="margin-top:16px"><div class="sectionhead"><h3>Liste de production</h3><small>Modifiable</small></div><div id="calendarTasks"></div></div>
-    </section>
-
-    <section class="view" id="view-tasks">
-      <div class="pagehead"><div><h2>Production & tâches</h2><p>Transforme les idées en vidéos publiées, sans perdre le fil.</p></div><div class="actions"><button class="btn primary" id="newTaskBtn">+ Ajouter une tâche</button></div></div>
-      <div class="grid stats"><div class="card"><div class="statlabel">À faire</div><div class="statvalue" id="todoCount">0</div></div><div class="card"><div class="statlabel">En cours</div><div class="statvalue" id="doingCount">0</div></div><div class="card"><div class="statlabel">Terminées</div><div class="statvalue" id="doneCount">0</div></div><div class="card"><div class="statlabel">Taux d'avancement</div><div class="statvalue" id="doneRate">0%</div></div></div>
-      <div class="card"><div class="sectionhead"><h3>Ta liste de tâches</h3><select id="taskFilter" style="border:1px solid var(--line);padding:7px;border-radius:8px"><option value="all">Toutes</option><option value="À faire">À faire</option><option value="En cours">En cours</option><option value="Terminée">Terminées</option></select></div><div id="tasksList"></div></div>
-    </section>
-
-    <section class="view" id="view-analytics">
-      <div class="pagehead"><div><h2>Performances</h2><p>Les données réelles viendront des API autorisées ou de tes saisies.</p></div><div class="actions"><button class="btn primary" id="addMetricBtn">+ Saisir un résultat</button></div></div>
-      <div class="notice">Pas de statistiques inventées : le graphique et les comparaisons se rempliront lorsque tu ajouteras des résultats ou qu'une connexion officielle sera configurée.</div>
-      <div class="grid stats"><div class="card"><div class="statlabel">Vues enregistrées</div><div class="statvalue" id="metricViews">0</div></div><div class="card"><div class="statlabel">Vidéos suivies</div><div class="statvalue" id="metricVideos">0</div></div><div class="card"><div class="statlabel">Moyenne des vues</div><div class="statvalue" id="metricAvg">0</div></div><div class="card"><div class="statlabel">Meilleure vidéo</div><div class="statvalue" style="font-size:16px" id="metricBest">—</div></div></div>
-      <div class="card"><div class="sectionhead"><h3>Résultats enregistrés</h3><small>Historique personnel</small></div><div id="metricsTable"></div></div>
-      <div class="card" style="margin-top:16px"><div class="sectionhead"><h3>Apprentissage</h3></div><div id="insights" class="muted">Ajoute quelques résultats pour commencer à identifier les formats qui fonctionnent sur tes comptes.</div></div>
-    </section>
-
-    <section class="view" id="view-team">
-      <div class="pagehead"><div><h2>Équipe & accès</h2><p>Préparer les rôles sans exposer les données privées.</p></div></div>
-      <div class="notice">Cette maquette ne crée pas de vrais comptes et ne protège pas l'accès par authentification. N'y stocke aucun secret ni donnée sensible. Les comptes individuels seront activés avec le backend.</div>
-      <div class="grid twocol">
-        <div class="card"><div class="sectionhead"><h3>Rôles prévus</h3></div><div class="trendrow"><div><strong>Propriétaire — Kassis</strong><small>Configuration, comptes, sources, données et permissions.</small></div><span class="tag">Admin</span></div><div class="trendrow"><div><strong>Staff — contenu</strong><small>Consulter les idées, gérer les tâches et saisir des résultats.</small></div><span class="tag green">Éditeur</span></div><div class="trendrow"><div><strong>Staff — lecture</strong><small>Consulter le planning et les concepts sans modifier les réglages.</small></div><span class="tag orange">Lecture</span></div></div>
-        <div class="card"><div class="sectionhead"><h3>Invitations</h3></div><p class="muted">Les invitations réelles seront disponibles après activation de l'authentification et des règles d'accès côté serveur.</p><div class="field"><label>Adresse e-mail du membre (maquette uniquement)</label><input id="inviteEmail" type="email" placeholder="staff@exemple.fr"></div><div class="field"><label>Rôle</label><select id="inviteRole"><option>Éditeur contenu</option><option>Lecture seule</option></select></div><button class="btn primary" id="inviteBtn">Préparer une invitation</button><div id="inviteResult" class="muted" style="margin-top:10px;font-size:12px"></div></div>
-      </div>
-    </section>
-
-    <section class="view" id="view-settings">
-      <div class="pagehead"><div><h2>Paramètres</h2><p>Préférences de travail et export de tes données de prototype.</p></div></div>
-      <div class="grid twocol">
-        <div class="card"><div class="sectionhead"><h3>Préférences du studio</h3></div><div class="field"><label>Nom du studio</label><input id="studioName" value="Kassis Creator Studio"></div><div class="field"><label>Fuseau horaire</label><select id="timezone"><option>Europe/Paris</option><option>UTC</option></select></div><div class="field"><label>Budget des outils</label><input value="0 € — aucune facturation autorisée" disabled></div><button class="btn primary" id="saveSettings">Enregistrer les préférences</button></div>
-        <div class="card"><div class="sectionhead"><h3>Données locales</h3></div><p class="muted">Export JSON pour sauvegarder les idées, tâches, sources et résultats enregistrés dans ce navigateur.</p><div class="actions"><button class="btn" id="exportData">Exporter mes données</button><button class="btn" id="importData">Importer un export</button><input type="file" id="importFile" accept="application/json" hidden></div><hr style="border:0;border-top:1px solid var(--line);margin:18px 0"><button class="btn" id="resetData">Réinitialiser les données de démonstration</button></div>
-      </div>
-    </section>
-  </div>
-</main>
-</div>
-<div class="toast" id="toast"></div>
-<dialog id="modal" style="border:0;border-radius:16px;padding:0;width:min(560px,calc(100vw - 28px));box-shadow:0 20px 80px #1112">
-  <form method="dialog" id="modalForm" style="padding:22px">
-    <div style="display:flex;justify-content:space-between;align-items:center;gap:12px"><h3 id="modalTitle" style="margin:0">Ajouter</h3><button class="btn" value="cancel" aria-label="Fermer">✕</button></div>
-    <div id="modalFields"></div><div class="actions" style="justify-content:flex-end;margin-top:16px"><button class="btn" value="cancel">Annuler</button><button class="btn primary" id="modalSave" value="default">Enregistrer</button></div>
-  </form>
-</dialog>
+:root{--bg:#f5f6fa;--panel:#fff;--ink:#1b1c27;--muted:#707487;--line:#e5e6ef;--purple:#7657e8;--pale:#eee9ff;--green:#18875b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.side{background:white;border-right:1px solid var(--line);padding:24px 16px}.brand{display:flex;gap:10px;align-items:center;margin:0 8px 30px}.mark{background:var(--purple);color:white;border-radius:12px;padding:8px 12px;font-weight:800}.brand strong{display:block}.brand small{color:var(--muted)}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;text-align:left;padding:12px;border-radius:10px;color:#5e6070}.nav button.active,.nav button:hover{background:var(--pale);color:var(--purple);font-weight:700}.main{min-width:0}.top{height:72px;background:white;border-bottom:1px solid var(--line);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}.top small{display:block;color:var(--muted)}.pill{font-size:12px;color:var(--green);background:#e8f8f0;padding:6px 10px;border-radius:30px}.content{max-width:1300px;margin:auto;padding:28px}.page{display:none}.page.active{display:block}.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}.head h1{margin:0 0 5px;font-size:28px;letter-spacing:-.04em}.head p{margin:0;color:var(--muted)}.btn{border:1px solid var(--line);background:white;border-radius:10px;padding:10px 14px;font-weight:650}.btn.primary{background:var(--purple);color:white;border-color:var(--purple)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0}.label{color:var(--muted);font-size:12px}.big{font-size:27px;font-weight:800}.ideas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.idea{border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;flex-direction:column;gap:8px}.tag{align-self:flex-start;background:var(--pale);color:#6245c9;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800}.tag.irl{background:#e7f7ef;color:#18875b}.idea h3{margin:0;font-size:16px}.idea p{margin:0;color:var(--muted);font-size:13px}.idea footer{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:7px;flex-wrap:wrap}.idea label{font-size:12px;display:flex;gap:6px;align-items:center;color:var(--green);font-weight:700}.idea input{accent-color:var(--green)}.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}.day{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;min-height:150px}.day strong{display:block}.day small{color:var(--muted)}.event{background:var(--pale);color:#6245c9;border-radius:8px;padding:8px;margin-top:10px;font-size:12px}.event.live{background:#e7f7ef;color:#18784f}.event.prod{background:#fff2df;color:#945e12}.muted{color:var(--muted)}.note{font-size:12px;color:var(--muted);margin-top:12px}.progress{height:8px;background:#eeeef5;border-radius:20px;overflow:hidden;margin-top:10px}.progress span{display:block;height:100%;background:var(--purple);width:0%}.toast{position:fixed;bottom:18px;right:18px;background:#242331;color:#fff;border-radius:10px;padding:12px 16px;display:none}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin-bottom:12px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.top{padding:14px 18px}.content{padding:18px}.week{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}.ideas{grid-template-columns:1fr}}@media(max-width:480px){.stats{grid-template-columns:1fr}.head{display:block}.head .btn{margin-top:12px}.week{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><div class="app">
+<aside class="side"><div class="brand"><div class="mark">K</div><div><strong>Kassis Creator Studio</strong><small>Planning & idées du jour</small></div></div>
+<nav class="nav"><button class="active" data-page="ideas">✦ Idées du jour</button><button data-page="calendar">▦ Calendrier</button></nav>
+<p class="note">Version simple · sauvegarde dans ce navigateur</p></aside>
+<main class="main"><header class="top"><div><small>KASSIS CREATOR STUDIO</small><strong id="topTitle">Tes idées du jour</strong></div><span class="pill">Mode simple</span></header>
+<div class="content">
+<section class="page active" id="page-ideas">
+<div class="head"><div><h1>Les idées du jour ✨</h1><p>2 concepts IRL et 3 concepts gaming. Coche une idée terminée : elle sera remplacée automatiquement.</p></div><button class="btn primary" id="refreshBtn">↻ Nouvelles idées</button></div>
+<div class="stats"><div class="card"><div class="label">Idées disponibles</div><div class="big" id="remaining">5</div></div><div class="card"><div class="label">Terminées aujourd'hui</div><div class="big" id="done">0</div></div><div class="card"><div class="label">Prochain live</div><div class="big" id="nextLive">15:00</div><div class="label" id="nextLiveDay">Aujourd'hui</div></div></div>
+<div class="card"><div class="head" style="margin-bottom:12px"><div><strong>Ta sélection</strong><div class="note" style="margin:3px 0 0">Les idées sont générées à partir d'une bibliothèque intégrée, sans données de tendances en direct.</div></div></div><div class="ideas" id="ideas"></div><div class="progress"><span id="progress"></span></div><div class="note">La validation conserve le concept dans l'historique du jour et affiche une nouvelle proposition de la même catégorie.</div></div>
+</section>
+<section class="page" id="page-calendar">
+<div class="head"><div><h1>Calendrier de production 📅</h1><p>Les horaires de live restent fixes. Le week-end est réservé à la production de contenu.</p></div><button class="btn" id="resetWeek">Réafficher cette semaine</button></div>
+<div class="card"><div class="week" id="week"></div><p class="note">Horaires de live configurés : lundi 15 h, mardi 18 h, mercredi 15 h, jeudi 15 h et vendredi 15 h. Chaque live dure 4 heures.</p></div>
+</section>
+</div></main></div><div class="toast" id="toast"></div>
 <script>
-const $=s=>document.querySelector(s);
-const $$=s=>[...document.querySelectorAll(s)];
-const KEY="kassisCreatorStudioPrototypeV1";
-const seed={
- ideas:[
-  {id:1,type:"IRL",title:"Je laisse une IA décider de ma journée… mais avec des règles absurdes",hook:"« Aujourd'hui, je ne prends aucune décision sans une règle complètement inutile. »",script:"Prépare 5 décisions simples à prendre chez toi. Pour chaque décision, applique une règle drôle. Termine par la décision la plus absurde.",shoot:"Téléphone fixe, plan face caméra, 5 séquences courtes.",edit:"Cuts rapides, sous-titres lisibles, zoom léger sur les réactions.",reason:"Concept de contrainte simple à comprendre et facile à décliner. Exemple à tester, tendance non vérifiée.",score:72,status:"À faire",source:"Concept éditorial — pas de source de tendance vérifiée"},
-  {id:2,type:"IRL",title:"Je teste des conseils absurdes comme si c'était du sérieux",hook:"« Internet m'a donné les pires conseils, aujourd'hui je les teste. »",script:"Choisis 3 conseils inoffensifs et réalisables à la maison. Annonce le conseil, teste-le, puis donne une réaction honnête.",shoot:"3 mini-séquences, cadrage stable, objets déjà disponibles.",edit:"Afficher chaque conseil à l'écran, couper les temps morts.",reason:"Structure répétable avec une promesse claire et une réaction personnelle.",score:68,status:"À faire",source:"Concept éditorial — à personnaliser"},
-  {id:3,type:"Gaming",title:"Je dois gagner la manche avec une règle qui change à chaque round",hook:"« Chaque manche, une nouvelle règle va ruiner ma game. »",script:"Prépare 5 contraintes équitables : changer de position, annoncer chaque achat, jouer un rôle inhabituel. Garde les moments où la contrainte crée une réaction.",shoot:"Capture gameplay et micro, note les timestamps pendant la partie.",edit:"Commencer par la réaction la plus forte, puis expliquer la règle en une phrase.",reason:"Défi avec progression et enjeu immédiat ; potentiel à vérifier sur les comptes de référence.",score:81,status:"À faire",source:"Concept éditorial — tendance non vérifiée"},
-  {id:4,type:"Gaming",title:"Le clutch raconté comme un documentaire animalier",hook:"« Dans son habitat naturel, le Reyna cherche désespérément un duel… »",script:"Prends un round intense ou drôle et ajoute une narration décalée qui contraste avec le gameplay.",shoot:"Enregistrer le gameplay, écrire la voix off après la partie.",edit:"Voix off, sous-titres, rythme calé sur les actions ; garder le contexte compréhensible.",reason:"Le contraste narration sérieuse / situation chaotique peut soutenir l'humour.",score:77,status:"À faire",source:"Concept éditorial — à tester"},
-  {id:5,type:"Gaming",title:"Le conseil VALORANT que j'aurais aimé connaître plus tôt",hook:"« Si tu fais encore ça sur VALORANT, teste plutôt cette méthode. »",script:"Choisis une seule erreur réellement utile à corriger, montre un exemple, puis une démonstration claire de la solution.",shoot:"Capture avant/après, narration concise.",edit:"Texte à l'écran, zoom sur l'élément important, conclusion courte.",reason:"Valeur pratique et promesse précise ; le sujet doit être validé par ton expérience.",score:74,status:"À faire",source:"Concept éditorial — vérifier l'exactitude avant publication"}
+const KEY='kassis_simple_v1';
+const pool={
+ IRL:[
+ {title:'Je laisse une IA organiser ma journée avec 3 règles absurdes',hook:'« Aujourd’hui, je ne décide plus rien… sauf si la règle est vraiment nulle. »',script:'Choisis trois règles simples, applique-les chez toi et termine par ton verdict.',shoot:'Plan face caméra, trois séquences courtes, réaction finale.',edit:'Cuts rapides, sous-titres lisibles, compteur des règles.'},
+ {title:'Je teste un conseil internet pendant 30 minutes',hook:'« Internet m’a conseillé ça, donc évidemment je vais regretter. »',script:'Présente le conseil, teste-le honnêtement, montre le résultat sans le surjouer.',shoot:'Intro, test en plans courts, résultat final.',edit:'Afficher le conseil à l’écran puis avant/après.'},
+ {title:'Une journée avec une règle inutile mais stricte',hook:'« J’ai inventé une règle qui va rendre ma journée beaucoup plus compliquée. »',script:'Annonce une règle inoffensive, montre trois moments où elle complique tout, puis note le défi.',shoot:'Filme à la maison, plusieurs petits moments, conclusion.',edit:'Ajouter un petit compteur et garder les réactions naturelles.'},
+ {title:'Je note mes propres habitudes comme si j’étais un coach',hook:'« Aujourd’hui je me juge comme si j’étais mon pire coach. »',script:'Choisis trois habitudes banales, donne une note et propose une amélioration drôle.',shoot:'Face caméra et exemples concrets dans la chambre.',edit:'Notes à l’écran, zoom léger sur les réactions.'},
+ {title:'Le défi des 10 minutes pour ranger un coin de ma chambre',hook:'« Dix minutes pour sauver cette zone. Ça va être compliqué. »',script:'Montre l’état de départ, lance le chrono, range puis compare le résultat.',shoot:'Avant, timelapse, résultat final.',edit:'Chrono visible et comparaison avant/après.'},
+ {title:'Je teste une routine de créateur pendant une heure',hook:'« Est-ce qu’une routine de créateur change vraiment quelque chose ? »',script:'Teste une routine simple et gratuite, puis dis ce que tu gardes ou abandonnes.',shoot:'Trois étapes filmées chez toi.',edit:'Chapitrage court et conclusion honnête.'}
  ],
- tasks:[
-  {id:1,title:"Choisir un concept IRL et écrire la version personnelle",category:"IRL",day:"Lundi",time:"10:00",status:"À faire",minutes:30},
-  {id:2,title:"Sélectionner les meilleurs moments du dernier live",category:"Gaming",day:"Lundi",time:"11:00",status:"À faire",minutes:45},
-  {id:3,title:"Monter et sous-titrer un Short",category:"Gaming",day:"Mardi",time:"14:00",status:"À faire",minutes:60},
-  {id:4,title:"Préparer les concepts et le tournage IRL",category:"IRL",day:"Samedi",time:"11:00",status:"À faire",minutes:90},
-  {id:5,title:"Faire le bilan des vidéos publiées",category:"Analyse",day:"Dimanche",time:"16:00",status:"À faire",minutes:30}
- ],
- sources:[
-  {name:"YouTube Data / Analytics API",state:"À configurer",detail:"Recherche publique et statistiques de ta chaîne selon les autorisations."},
-  {name:"TikTok",state:"À vérifier",detail:"Disponibilité des données et autorisations selon les produits API accessibles."},
-  {name:"Instagram / Reels",state:"À vérifier",detail:"Accès dépendant des API Meta, du type de compte et des permissions."},
-  {name:"Twitch",state:"À configurer",detail:"API officielle pour les données autorisées et les informations de chaîne."}
- ],
- manualSources:[],metrics:[],settings:{name:"Kassis Creator Studio",timezone:"Europe/Paris"}
+ Gaming:[
+ {title:'VALORANT : une règle absurde pendant toute une partie',hook:'« Si je fais ça une seule fois, je dois respecter la règle jusqu’à la fin. »',script:'Choisis une règle réalisable et drôle, explique-la avant la manche, garde les meilleurs moments.',shoot:'Capture de jeu et réaction micro/caméra.',edit:'Couper les temps morts, sous-titres sur les réactions.'},
+ {title:'Je transforme mon pire round en mini-histoire',hook:'« Ce round devait être simple. Il a très mal vieilli. »',script:'Raconte le round en trois actes : confiance, catastrophe, réaction.',shoot:'Récupère le clip et enregistre une narration courte.',edit:'Zooms légers, texte pour les trois actes.'},
+ {title:'Le défi : jouer en annonçant chaque décision',hook:'« Aujourd’hui, je dois annoncer mes décisions avant de les faire. »',script:'Annonce tes choix pendant quelques manches et garde les moments où ça te met en difficulté.',shoot:'Capture gameplay avec micro.',edit:'Mettre l’annonce juste avant l’action et couper les pauses.'},
+ {title:'Le moment où mon cerveau quitte la partie',hook:'« À partir de cette seconde, plus rien n’a de sens. »',script:'Trouve un moment incompréhensible, montre le contexte puis la réaction.',shoot:'Un clip de gameplay et une réaction sincère.',edit:'Accroche immédiate, clip, réaction finale.'},
+ {title:'Je rejoue une action ratée en essayant de comprendre',hook:'« Expliquez-moi comment j’ai réussi à rater ça. »',script:'Montre l’action, propose deux explications et termine par ta vraie conclusion.',shoot:'Clip original et commentaire face caméra ou micro.',edit:'Rejouer le moment une fois au ralenti.'},
+ {title:'VALORANT : le round résumé en trois émotions',hook:'« J’ai vécu toute une carrière en 35 secondes. »',script:'Choisis un round avec confiance, panique et soulagement ou rage.',shoot:'Un clip avec réaction vocale.',edit:'Titres courts pour chaque émotion.'},
+ {title:'Le conseil de ranked que je ne devrais probablement pas donner',hook:'« Conseil totalement sérieux… enfin presque. »',script:'Présente une astuce réelle, ajoute une touche d’humour et précise quand elle est utile.',shoot:'Gameplay d’illustration et narration.',edit:'Montrer l’astuce en action, pas seulement en parler.'}
+ ]
 };
-let data=load();
-function load(){try{return {...structuredClone(seed),...JSON.parse(localStorage.getItem(KEY)||"{}")}}catch(e){return structuredClone(seed)}}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
-function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function toast(msg){let t=$("#toast");t.textContent=msg;t.style.display="block";setTimeout(()=>t.style.display="none",2600)}
-function go(view){$$(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+view));$$(".navbtn").forEach(b=>b.classList.toggle("active",b.dataset.view===view));let names={dashboard:"TABLEAU DE BORD",ideas:"LABORATOIRE D'IDÉES",trends:"RADAR DES TENDANCES",calendar:"CALENDRIER",tasks:"PRODUCTION & TÂCHES",analytics:"PERFORMANCES",team:"ÉQUIPE & ACCÈS",settings:"PARAMÈTRES"};$("#crumb").textContent=names[view]||view.toUpperCase();$("#topTitle").textContent=({dashboard:"Ton espace créateur",ideas:"Trouver et préparer les concepts",trends:"Observer les signaux utiles",calendar:"Organiser ta semaine",tasks:"Faire avancer la production",analytics:"Apprendre de tes résultats",team:"Gérer les accès",settings:"Préférences du studio"})[view]||"";$("#sidebar").classList.remove("open");}
-$$(".navbtn").forEach(b=>b.addEventListener("click",()=>go(b.dataset.view)));
-$$("[data-goto]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.goto)));
-$("#menuBtn").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
-function statusTag(s){let cl=s==="Terminée"||s==="Publié"?"green":s==="En cours"||s==="En montage"?"orange":"";return `<span class="tag ${cl}">${esc(s)}</span>`}
-function ideaCard(i){return `<article class="idea"><div><span class="tag ${i.type==="IRL"?"green":""}">${esc(i.type)}</span> ${statusTag(i.status)}<h4>${esc(i.title)}</h4><p><strong>Hook :</strong> ${esc(i.hook)}</p><div class="ideabtns"><button class="mini primary" data-action="details" data-id="${i.id}">Voir le concept</button><button class="mini" data-action="status" data-id="${i.id}">Changer le statut</button><button class="mini" data-action="deleteIdea" data-id="${i.id}">Supprimer</button></div></div><div class="score">${Number(i.score)||"—"}/100<small>score éditorial indicatif</small></div></article>`}
-function taskRow(t,check=false){return `<div class="task">${check?`<input type="checkbox" data-action="toggleTask" data-id="${t.id}" ${t.status==="Terminée"?"checked":""}>`:""}<div style="flex:1"><strong>${esc(t.title)}</strong><small>${esc(t.day||"À planifier")} · ${esc(t.time||"Horaire libre")} · ${esc(t.minutes||30)} min</small></div>${statusTag(t.status)} ${check?"":`<button class="mini" data-action="statusTask" data-id="${t.id}">Avancer</button>`}</div>`}
-function renderDashboard(){
- $("#dashboardIdeas").innerHTML=data.ideas.slice(0,3).map(ideaCard).join("")||'<div class="empty">Aucune idée. Ajoute ton premier concept.</div>';
- $("#dashboardTasks").innerHTML=data.tasks.slice(0,5).map(t=>taskRow(t,true)).join("")||'<div class="empty">Aucune tâche.</div>';
- let done=data.tasks.filter(t=>t.status==="Terminée").length, total=data.tasks.length, pct=total?Math.round(done/total*100):0;
- $("#statIdeas").textContent=data.ideas.filter(i=>i.status!=="Publié").length;$("#statTasks").textContent=`${done}/${total}`;$("#taskProgress").textContent=pct+" %";$("#progressBar").style.width=pct+"%";$("#statPublished").textContent=data.ideas.filter(i=>i.status==="Publié").length;
- $("#dashboardTimeline").innerHTML=[["Lun","15:00","Live VALORANT"],["Mar","18:00","Live VALORANT"],["Mer","15:00","Live VALORANT"],["Jeu","15:00","Live VALORANT"],["Ven","15:00","Live VALORANT"],["Sam","11:00","Production de contenu"],["Dim","16:00","Bilan & préparation"]].map(x=>`<div class="timeitem"><div class="time">${x[0]} ${x[1]}</div><div class="dotline"><span class="dot"></span></div><div class="event"><strong>${x[2]}</strong><small>${x[0]==="Sam"||x[0]==="Dim"?"Créneau proposé":"Durée prévue : 4 h"}</small></div></div>`).join("");
- $("#nextLive").textContent="15:00";$("#nextLiveNote").textContent="Horaire selon le jour de live";
-}
-function renderIdeas(){
- let filter=$("#ideaFilter").value;let list=data.ideas.filter(i=>filter==="all"||i.type===filter);$("#allIdeas").innerHTML=list.map(ideaCard).join("")||'<div class="empty">Aucune idée dans cette catégorie.</div>';
- $("#ideaPending").textContent=data.ideas.filter(i=>i.status==="À faire").length;$("#ideaShoot").textContent=data.ideas.filter(i=>i.status==="À tourner").length;$("#ideaEdit").textContent=data.ideas.filter(i=>i.status==="En montage").length;$("#ideaReady").textContent=data.ideas.filter(i=>i.status==="Prêt à publier").length;
-}
-function renderSources(){
- $("#sourcesList").innerHTML=data.sources.map(s=>`<div class="trendrow"><div><strong>${esc(s.name)}</strong><small>${esc(s.detail)}</small></div><span class="tag orange">${esc(s.state)}</span></div>`).join("");
- $("#sourceCount").textContent=data.manualSources.length+" source(s)";
- $("#manualSources").innerHTML=data.manualSources.length?data.manualSources.map((s,i)=>`<div class="trendrow"><div><strong>${esc(s.title)}</strong><small>${esc(s.url)} · ${esc(s.note||"Source ajoutée manuellement")}</small></div><button class="mini" data-action="deleteSource" data-id="${i}">Retirer</button></div>`).join(""):'<div class="empty">Aucune source ajoutée. Tu pourras enregistrer ici les liens de vidéos ou de créateurs à analyser.</div>';
-}
-function renderTasks(){
- let f=$("#taskFilter").value;let tasks=data.tasks.filter(t=>f==="all"||t.status===f);$("#tasksList").innerHTML=tasks.map(t=>taskRow(t)).join("")||'<div class="empty">Aucune tâche dans cette catégorie.</div>';
- let todo=data.tasks.filter(t=>t.status==="À faire").length,doing=data.tasks.filter(t=>t.status==="En cours").length,done=data.tasks.filter(t=>t.status==="Terminée").length;
- $("#todoCount").textContent=todo;$("#doingCount").textContent=doing;$("#doneCount").textContent=done;$("#doneRate").textContent=(data.tasks.length?Math.round(done/data.tasks.length*100):0)+"%";
- $("#calendarTasks").innerHTML=data.tasks.map(t=>taskRow(t)).join("")||'<div class="empty">Aucune tâche planifiée.</div>';
-}
-function renderCalendar(){
- let days=[["Lun","Lundi","15:00","Live VALORANT"],["Mar","Mardi","18:00","Live VALORANT"],["Mer","Mercredi","15:00","Live VALORANT"],["Jeu","Jeudi","15:00","Live VALORANT"],["Ven","Vendredi","15:00","Live VALORANT"],["Sam","Samedi","11:00","Production / tournage"],["Dim","Dimanche","16:00","Bilan / planification"]];
- $("#weekGrid").innerHTML=days.map(d=>`<div class="day"><strong>${d[0]}</strong><small>${d[2]}</small><div class="block ${d[3].startsWith("Live")?"live":""}">${d[3]}</div>${data.tasks.filter(t=>t.day===d[1]).slice(0,2).map(t=>`<div class="block">${esc(t.title)}</div>`).join("")}</div>`).join("");
-}
-function renderAnalytics(){
- let ms=data.metrics,views=ms.reduce((a,m)=>a+(Number(m.views)||0),0);$("#metricViews").textContent=views.toLocaleString("fr-FR");$("#metricVideos").textContent=ms.length;$("#metricAvg").textContent=ms.length?Math.round(views/ms.length).toLocaleString("fr-FR"):"0";let best=ms.slice().sort((a,b)=>b.views-a.views)[0];$("#metricBest").textContent=best?best.title:"—";
- $("#metricsTable").innerHTML=ms.length?`<table class="table"><thead><tr><th>Vidéo</th><th>Plateforme</th><th>Vues</th><th>Likes</th><th>Date</th><th></th></tr></thead><tbody>${ms.map((m,i)=>`<tr><td>${esc(m.title)}</td><td>${esc(m.platform)}</td><td>${Number(m.views).toLocaleString("fr-FR")}</td><td>${Number(m.likes||0).toLocaleString("fr-FR")}</td><td>${esc(m.date)}</td><td><button class="mini" data-action="deleteMetric" data-id="${i}">Supprimer</button></td></tr>`).join("")}</tbody></table>`:'<div class="empty">Aucun résultat enregistré pour le moment.</div>';
- if(ms.length){let by={};ms.forEach(m=>{let k=m.type||"Non précisé";(by[k]??=[]).push(Number(m.views)||0)});let lines=Object.entries(by).map(([k,v])=>`${k} : moyenne de ${Math.round(v.reduce((a,b)=>a+b,0)/v.length).toLocaleString("fr-FR")} vues sur ${v.length} vidéo(s)`).join("<br>");$("#insights").innerHTML=lines+"<br><br><small>Échantillons trop petits ou biaisés possibles : ces moyennes ne prouvent pas qu'un format cause de meilleures performances.</small>"}else $("#insights").textContent="Ajoute quelques résultats pour commencer à identifier les formats qui fonctionnent sur tes comptes.";
-}
-function renderAll(){renderDashboard();renderIdeas();renderSources();renderTasks();renderCalendar();renderAnalytics();$("#studioName").value=data.settings.name;$("#timezone").value=data.settings.timezone}
-function openModal(title,fields,onSave){
- $("#modalTitle").textContent=title;$("#modalFields").innerHTML=fields.map(f=>`<div class="field"><label for="${f.id}">${f.label}</label>${f.type==="textarea"?`<textarea id="${f.id}" placeholder="${f.placeholder||""}" ${f.required?"required":""}></textarea>`:f.type==="select"?`<select id="${f.id}">${f.options.map(o=>`<option>${o}</option>`).join("")}</select>`:`<input id="${f.id}" type="${f.type||"text"}" placeholder="${f.placeholder||""}" ${f.required?"required":""}>`}</div>`).join("");
- $("#modal").showModal();$("#modalSave").onclick=e=>{e.preventDefault();let vals={};for(let f of fields){let el=$("#"+f.id);if(f.required&&!el.value.trim()){el.focus();return}vals[f.id]=el.value}$("#modal").close();onSave(vals)};
-}
-function addIdea(){openModal("Créer un concept",[{id:"type",label:"Catégorie",type:"select",options:["IRL","Gaming"]},{id:"title",label:"Titre du concept",required:true},{id:"hook",label:"Hook / première phrase",type:"textarea",required:true},{id:"script",label:"Scénario et étapes",type:"textarea"},{id:"shoot",label:"Tournage",type:"textarea"},{id:"edit",label:"Montage",type:"textarea"},{id:"reason",label:"Pourquoi tester ce concept ?",type:"textarea"}],v=>{data.ideas.unshift({id:Date.now(),...v,score:0,status:"À faire",source:"Ajout manuel"});save();toast("Concept enregistré")})}
-function addTask(){openModal("Ajouter une tâche",[{id:"title",label:"Tâche",required:true},{id:"category",label:"Catégorie",type:"select",options:["IRL","Gaming","Analyse","Live","Autre"]},{id:"day",label:"Jour",type:"select",options:["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"]},{id:"time",label:"Heure",type:"text",placeholder:"10:00"},{id:"minutes",label:"Durée estimée (minutes)",type:"number"}],v=>{data.tasks.push({id:Date.now(),...v,status:"À faire",minutes:Number(v.minutes)||30});save();toast("Tâche ajoutée")})}
-function addSource(){openModal("Ajouter une source à analyser",[{id:"title",label:"Nom de la source",required:true},{id:"url",label:"Lien de la vidéo ou du profil",type:"url",required:true},{id:"note",label:"Pourquoi cette source t'intéresse ?",type:"textarea"}],v=>{data.manualSources.unshift(v);save();toast("Source enregistrée")})}
-function addMetric(){openModal("Saisir les résultats d'une vidéo",[{id:"title",label:"Titre de la vidéo",required:true},{id:"platform",label:"Plateforme",type:"select",options:["TikTok IRL","TikTok gaming","YouTube Shorts","Twitch"]},{id:"type",label:"Type de contenu",type:"select",options:["Humour","Défi","Storytelling","VALORANT - gameplay","VALORANT - tutoriel","Autre"]},{id:"views",label:"Vues",type:"number",required:true},{id:"likes",label:"Likes",type:"number"},{id:"date",label:"Date de publication",type:"date",required:true}],v=>{data.metrics.unshift({...v,views:Number(v.views)||0,likes:Number(v.likes)||0});save();toast("Résultat enregistré")})}
-document.addEventListener("click",e=>{
- let b=e.target.closest("[data-action]");if(!b)return;let id=Number(b.dataset.id),a=b.dataset.action;
- if(a==="details"){let i=data.ideas.find(x=>x.id===id);if(i)openModal(i.title,[{id:"hook",label:"Hook",type:"textarea"},{id:"script",label:"Scénario",type:"textarea"},{id:"shoot",label:"Tournage",type:"textarea"},{id:"edit",label:"Montage",type:"textarea"},{id:"reason",label:"Justification",type:"textarea"},{id:"source",label:"Source / provenance",type:"textarea"}],v=>{Object.assign(i,v);save();toast("Concept mis à jour")});if(i){$("#hook").value=i.hook||"";$("#script").value=i.script||"";$("#shoot").value=i.shoot||"";$("#edit").value=i.edit||"";$("#reason").value=i.reason||"";$("#source").value=i.source||""}}
- if(a==="status"){let i=data.ideas.find(x=>x.id===id);if(i){let states=["À faire","À tourner","En montage","Prêt à publier","Publié"];i.status=states[(states.indexOf(i.status)+1)%states.length];save();toast("Statut mis à jour")}}
- if(a==="deleteIdea"&&confirm("Supprimer ce concept ?")){data.ideas=data.ideas.filter(x=>x.id!==id);save()}
- if(a==="toggleTask"){let t=data.tasks.find(x=>x.id===id);if(t)t.status=b.checked?"Terminée":"À faire";save()}
- if(a==="statusTask"){let t=data.tasks.find(x=>x.id===id);if(t){let s=["À faire","En cours","Terminée"];t.status=s[(s.indexOf(t.status)+1)%s.length];save()}}
- if(a==="deleteSource"){data.manualSources.splice(id,1);save()}
- if(a==="deleteMetric"){data.metrics.splice(id,1);save()}
-});
-$("#newIdeaBtn").onclick=addIdea;$("#newTaskBtn").onclick=addTask;$("#addTaskFromCal").onclick=addTask;$("#addSourceBtn").onclick=addSource;$("#addMetricBtn").onclick=addMetric;
-$("#ideaFilter").onchange=renderIdeas;$("#taskFilter").onchange=renderTasks;
-$("#refreshTrends").onclick=()=>toast("Aucune collecte connectée : configure les sources lors de l'étape backend.");
-$("#inviteBtn").onclick=()=>{let em=$("#inviteEmail").value;if(!em.includes("@")){toast("Saisis une adresse e-mail valide");return}$("#inviteResult").textContent="Invitation non envoyée : l'authentification doit d'abord être configurée. Rôle préparé : "+$("#inviteRole").value;};
-$("#saveSettings").onclick=()=>{data.settings.name=$("#studioName").value||"Kassis Creator Studio";data.settings.timezone=$("#timezone").value;save();toast("Préférences enregistrées")};
-$("#exportData").onclick=()=>{let blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="kassis-creator-studio-export.json";a.click();URL.revokeObjectURL(url);toast("Export téléchargé")};
-$("#importData").onclick=()=>$("#importFile").click();
-$("#importFile").onchange=async e=>{let f=e.target.files[0];if(!f)return;try{let obj=JSON.parse(await f.text());if(!obj.ideas||!obj.tasks)throw Error();data={...structuredClone(seed),...obj};save();toast("Import terminé")}catch(err){toast("Fichier invalide ou incompatible")}e.target.value=""};
-$("#resetData").onclick=()=>{if(confirm("Réinitialiser toutes les données locales et revenir aux exemples ?")){data=structuredClone(seed);save();toast("Données de démonstration réinitialisées")}};
-$("#todayBtn").onclick=()=>toast("Planning du jour affiché");
-renderAll();
-</script>
-</body>
-</html>
+const liveHours={0:'15:00',1:'18:00',2:'15:00',3:'15:00',4:'15:00'};
+const weekdays=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+let state=loadState();
+function dateKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function pick(type,exclude=[]){const arr=pool[type].filter(x=>!exclude.includes(x.title));const choices=arr.length?arr:pool[type];return structuredClone(choices[Math.floor(Math.random()*choices.length)])}
+function makeIdea(type){const x=pick(type,state.history.map(h=>h.title));return {id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),type,...x,done:false}}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.date===dateKey()&&Array.isArray(s.ideas))return s}catch(e){}return freshState()}
+function freshState(){const s={date:dateKey(),ideas:[],history:[],done:[]};for(let i=0;i<2;i++)s.ideas.push(makeIdeaSafe('IRL',s));for(let i=0;i<3;i++)s.ideas.push(makeIdeaSafe('Gaming',s));return s}
+function makeIdeaSafe(type,s){const x=pick(type,(s.history||[]).map(h=>h.title));return {id:String(Date.now()+Math.random()),type,...x,done:false}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderIdeas();renderStats()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2300)}
+function completeIdea(id){const i=state.ideas.find(x=>x.id===id);if(!i)return;state.history.push({title:i.title,type:i.type,completedAt:new Date().toISOString()});state.done.push(i.title);const replacement=makeIdea(i.type);state.ideas=state.ideas.map(x=>x.id===id?replacement:x);save();toast('Idée terminée : une nouvelle idée '+(i.type==='IRL'?'IRL':'gaming')+' est prête.')}
+function renderIdeas(){const el=document.getElementById('ideas');el.innerHTML=state.ideas.map(i=>`<article class="idea"><span class="tag ${i.type==='IRL'?'irl':''}">${i.type==='IRL'?'IRL':'GAMING · VALORANT'}</span><h3>${esc(i.title)}</h3><p><strong>Accroche :</strong> ${esc(i.hook)}</p><p><strong>Déroulement :</strong> ${esc(i.script)}</p><p><strong>Tournage :</strong> ${esc(i.shoot)}</p><p><strong>Montage :</strong> ${esc(i.edit)}</p><footer><label><input type="checkbox" onchange="completeIdea('${i.id}')"> Terminé — proposer une autre idée</label></footer></article>`).join('')}
+function renderStats(){document.getElementById('remaining').textContent=state.ideas.length;document.getElementById('done').textContent=state.done.length;document.getElementById('progress').style.width=Math.min(100,state.done.length/5*100)+'%';const now=new Date();let day=(now.getDay()+6)%7;let next=day;if(day>4)next=0;document.getElementById('nextLive').textContent=liveHours[next]||'Lundi';document.getElementById('nextLiveDay').textContent=day>4?'Lundi prochain':(day===next?'Aujourd’hui':weekdays[next])}
+function renderWeek(){const el=document.getElementById('week');el.innerHTML=weekdays.map((d,i)=>{let content='';if(i<5)content=`<div class="event live">🎥 Live<br><strong>${liveHours[i]}</strong><br>4 heures</div><div class="event">✦ Préparer 1 idée IRL + 1 gaming</div>`;else content='<div class="event prod">🎬 Tournage / montage</div><div class="event">Préparer les contenus</div>';return `<div class="day"><strong>${d}</strong><small>${i<5?'Jour de live':'Production, sans live'}</small>${content}</div>`}).join('')}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function show(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+page));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('topTitle').textContent=page==='ideas'?'Tes idées du jour':'Ton calendrier de production'}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.page));
+document.getElementById('refreshBtn').onclick=()=>{state.ideas=state.ideas.map(i=>makeIdea(i.type));save();toast('Tes idées ont été renouvelées.')};
+document.getElementById('resetWeek').onclick=()=>{renderWeek();toast('Calendrier réaffiché.')};
+renderIdeas();renderStats();renderWeek();
+</script></body></html>
