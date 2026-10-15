@@ -1,25 +1,71 @@
-# Kassis Creator Studio — Prototype V0.1
-
-## Ouvrir
-Ouvrir `index.html` dans un navigateur récent. Aucun build ni abonnement n'est nécessaire.
-
-## Ce qui fonctionne dans ce prototype
-- Navigation responsive PC/mobile
-- Tableau de bord
-- Création, consultation, changement de statut et suppression des idées
-- Création et suivi des tâches
-- Calendrier hebdomadaire initial avec les horaires de live définis
-- Ajout de sources manuelles
-- Saisie et analyse simple des résultats
-- Export/import JSON
-- Préférences locales
-
-## Limites importantes
-- Les données sont enregistrées dans le navigateur via localStorage. Elles ne sont pas partagées entre appareils ou utilisateurs.
-- L'interface ne dispose PAS encore d'une authentification. La page Équipe est une maquette, pas un système d'invitations réel.
-- Aucun scraping ni appel API n'est effectué.
-- Les concepts d'exemple ne sont pas des tendances vérifiées.
-- Les collectes planifiées, la connexion aux plateformes, la synchronisation et les notifications serveur nécessitent un backend.
-
-## Étape suivante
-Créer les comptes GitHub, Cloudflare et Supabase, puis déployer le frontend et connecter Supabase Auth/Database avec des règles d'accès par utilisateur et rôle. Ne jamais mettre de clé secrète dans le code frontend.
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kassis Creator Studio</title>
+<style>
+:root{--bg:#f5f6fa;--panel:#fff;--ink:#1b1c27;--muted:#707487;--line:#e5e6ef;--purple:#7657e8;--pale:#eee9ff;--green:#18875b}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,-apple-system,"Segoe UI",sans-serif}
+button{font:inherit;cursor:pointer}.app{display:grid;grid-template-columns:230px 1fr;min-height:100vh}.side{background:white;border-right:1px solid var(--line);padding:24px 16px}.brand{display:flex;gap:10px;align-items:center;margin:0 8px 30px}.mark{background:var(--purple);color:white;border-radius:12px;padding:8px 12px;font-weight:800}.brand strong{display:block}.brand small{color:var(--muted)}.nav{display:grid;gap:6px}.nav button{border:0;background:transparent;text-align:left;padding:12px;border-radius:10px;color:#5e6070}.nav button.active,.nav button:hover{background:var(--pale);color:var(--purple);font-weight:700}.main{min-width:0}.top{height:72px;background:white;border-bottom:1px solid var(--line);padding:16px 28px;display:flex;justify-content:space-between;align-items:center}.top small{display:block;color:var(--muted)}.pill{font-size:12px;color:var(--green);background:#e8f8f0;padding:6px 10px;border-radius:30px}.content{max-width:1300px;margin:auto;padding:28px}.page{display:none}.page.active{display:block}.head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:22px}.head h1{margin:0 0 5px;font-size:28px;letter-spacing:-.04em}.head p{margin:0;color:var(--muted)}.btn{border:1px solid var(--line);background:white;border-radius:10px;padding:10px 14px;font-weight:650}.btn.primary{background:var(--purple);color:white;border-color:var(--purple)}.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:18px}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;min-width:0}.label{color:var(--muted);font-size:12px}.big{font-size:27px;font-weight:800}.ideas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.idea{border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;flex-direction:column;gap:8px}.tag{align-self:flex-start;background:var(--pale);color:#6245c9;border-radius:6px;padding:4px 8px;font-size:11px;font-weight:800}.tag.irl{background:#e7f7ef;color:#18875b}.idea h3{margin:0;font-size:16px}.idea p{margin:0;color:var(--muted);font-size:13px}.idea footer{display:flex;align-items:center;gap:8px;margin-top:auto;padding-top:7px;flex-wrap:wrap}.idea label{font-size:12px;display:flex;gap:6px;align-items:center;color:var(--green);font-weight:700}.idea input{accent-color:var(--green)}.week{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:9px}.day{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;min-height:150px}.day strong{display:block}.day small{color:var(--muted)}.event{background:var(--pale);color:#6245c9;border-radius:8px;padding:8px;margin-top:10px;font-size:12px}.event.live{background:#e7f7ef;color:#18784f}.event.prod{background:#fff2df;color:#945e12}.muted{color:var(--muted)}.note{font-size:12px;color:var(--muted);margin-top:12px}.progress{height:8px;background:#eeeef5;border-radius:20px;overflow:hidden;margin-top:10px}.progress span{display:block;height:100%;background:var(--purple);width:0%}.toast{position:fixed;bottom:18px;right:18px;background:#242331;color:#fff;border-radius:10px;padding:12px 16px;display:none}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{margin-bottom:12px}.nav{grid-template-columns:repeat(2,minmax(0,1fr))}.top{padding:14px 18px}.content{padding:18px}.week{grid-template-columns:repeat(2,minmax(0,1fr))}.stats{grid-template-columns:1fr 1fr}.ideas{grid-template-columns:1fr}}@media(max-width:480px){.stats{grid-template-columns:1fr}.head{display:block}.head .btn{margin-top:12px}.week{grid-template-columns:1fr 1fr}}
+</style></head>
+<body><div class="app">
+<aside class="side"><div class="brand"><div class="mark">K</div><div><strong>Kassis Creator Studio</strong><small>Planning & idées du jour</small></div></div>
+<nav class="nav"><button class="active" data-page="ideas">✦ Idées du jour</button><button data-page="calendar">▦ Calendrier</button></nav>
+<p class="note">Version simple · sauvegarde dans ce navigateur</p></aside>
+<main class="main"><header class="top"><div><small>KASSIS CREATOR STUDIO</small><strong id="topTitle">Tes idées du jour</strong></div><span class="pill">Mode simple</span></header>
+<div class="content">
+<section class="page active" id="page-ideas">
+<div class="head"><div><h1>Les idées du jour ✨</h1><p>2 concepts IRL et 3 concepts gaming. Coche une idée terminée : elle sera remplacée automatiquement.</p></div><button class="btn primary" id="refreshBtn">↻ Nouvelles idées</button></div>
+<div class="stats"><div class="card"><div class="label">Idées disponibles</div><div class="big" id="remaining">5</div></div><div class="card"><div class="label">Terminées aujourd'hui</div><div class="big" id="done">0</div></div><div class="card"><div class="label">Prochain live</div><div class="big" id="nextLive">15:00</div><div class="label" id="nextLiveDay">Aujourd'hui</div></div></div>
+<div class="card"><div class="head" style="margin-bottom:12px"><div><strong>Ta sélection</strong><div class="note" style="margin:3px 0 0">Les idées sont générées à partir d'une bibliothèque intégrée, sans données de tendances en direct.</div></div></div><div class="ideas" id="ideas"></div><div class="progress"><span id="progress"></span></div><div class="note">La validation conserve le concept dans l'historique du jour et affiche une nouvelle proposition de la même catégorie.</div></div>
+</section>
+<section class="page" id="page-calendar">
+<div class="head"><div><h1>Calendrier de production 📅</h1><p>Les horaires de live restent fixes. Le week-end est réservé à la production de contenu.</p></div><button class="btn" id="resetWeek">Réafficher cette semaine</button></div>
+<div class="card"><div class="week" id="week"></div><p class="note">Horaires de live configurés : lundi 15 h, mardi 18 h, mercredi 15 h, jeudi 15 h et vendredi 15 h. Chaque live dure 4 heures.</p></div>
+</section>
+</div></main></div><div class="toast" id="toast"></div>
+<script>
+const KEY='kassis_simple_v1';
+const pool={
+ IRL:[
+ {title:'Je laisse une IA organiser ma journée avec 3 règles absurdes',hook:'« Aujourd’hui, je ne décide plus rien… sauf si la règle est vraiment nulle. »',script:'Choisis trois règles simples, applique-les chez toi et termine par ton verdict.',shoot:'Plan face caméra, trois séquences courtes, réaction finale.',edit:'Cuts rapides, sous-titres lisibles, compteur des règles.'},
+ {title:'Je teste un conseil internet pendant 30 minutes',hook:'« Internet m’a conseillé ça, donc évidemment je vais regretter. »',script:'Présente le conseil, teste-le honnêtement, montre le résultat sans le surjouer.',shoot:'Intro, test en plans courts, résultat final.',edit:'Afficher le conseil à l’écran puis avant/après.'},
+ {title:'Une journée avec une règle inutile mais stricte',hook:'« J’ai inventé une règle qui va rendre ma journée beaucoup plus compliquée. »',script:'Annonce une règle inoffensive, montre trois moments où elle complique tout, puis note le défi.',shoot:'Filme à la maison, plusieurs petits moments, conclusion.',edit:'Ajouter un petit compteur et garder les réactions naturelles.'},
+ {title:'Je note mes propres habitudes comme si j’étais un coach',hook:'« Aujourd’hui je me juge comme si j’étais mon pire coach. »',script:'Choisis trois habitudes banales, donne une note et propose une amélioration drôle.',shoot:'Face caméra et exemples concrets dans la chambre.',edit:'Notes à l’écran, zoom léger sur les réactions.'},
+ {title:'Le défi des 10 minutes pour ranger un coin de ma chambre',hook:'« Dix minutes pour sauver cette zone. Ça va être compliqué. »',script:'Montre l’état de départ, lance le chrono, range puis compare le résultat.',shoot:'Avant, timelapse, résultat final.',edit:'Chrono visible et comparaison avant/après.'},
+ {title:'Je teste une routine de créateur pendant une heure',hook:'« Est-ce qu’une routine de créateur change vraiment quelque chose ? »',script:'Teste une routine simple et gratuite, puis dis ce que tu gardes ou abandonnes.',shoot:'Trois étapes filmées chez toi.',edit:'Chapitrage court et conclusion honnête.'}
+ ],
+ Gaming:[
+ {title:'VALORANT : une règle absurde pendant toute une partie',hook:'« Si je fais ça une seule fois, je dois respecter la règle jusqu’à la fin. »',script:'Choisis une règle réalisable et drôle, explique-la avant la manche, garde les meilleurs moments.',shoot:'Capture de jeu et réaction micro/caméra.',edit:'Couper les temps morts, sous-titres sur les réactions.'},
+ {title:'Je transforme mon pire round en mini-histoire',hook:'« Ce round devait être simple. Il a très mal vieilli. »',script:'Raconte le round en trois actes : confiance, catastrophe, réaction.',shoot:'Récupère le clip et enregistre une narration courte.',edit:'Zooms légers, texte pour les trois actes.'},
+ {title:'Le défi : jouer en annonçant chaque décision',hook:'« Aujourd’hui, je dois annoncer mes décisions avant de les faire. »',script:'Annonce tes choix pendant quelques manches et garde les moments où ça te met en difficulté.',shoot:'Capture gameplay avec micro.',edit:'Mettre l’annonce juste avant l’action et couper les pauses.'},
+ {title:'Le moment où mon cerveau quitte la partie',hook:'« À partir de cette seconde, plus rien n’a de sens. »',script:'Trouve un moment incompréhensible, montre le contexte puis la réaction.',shoot:'Un clip de gameplay et une réaction sincère.',edit:'Accroche immédiate, clip, réaction finale.'},
+ {title:'Je rejoue une action ratée en essayant de comprendre',hook:'« Expliquez-moi comment j’ai réussi à rater ça. »',script:'Montre l’action, propose deux explications et termine par ta vraie conclusion.',shoot:'Clip original et commentaire face caméra ou micro.',edit:'Rejouer le moment une fois au ralenti.'},
+ {title:'VALORANT : le round résumé en trois émotions',hook:'« J’ai vécu toute une carrière en 35 secondes. »',script:'Choisis un round avec confiance, panique et soulagement ou rage.',shoot:'Un clip avec réaction vocale.',edit:'Titres courts pour chaque émotion.'},
+ {title:'Le conseil de ranked que je ne devrais probablement pas donner',hook:'« Conseil totalement sérieux… enfin presque. »',script:'Présente une astuce réelle, ajoute une touche d’humour et précise quand elle est utile.',shoot:'Gameplay d’illustration et narration.',edit:'Montrer l’astuce en action, pas seulement en parler.'}
+ ]
+};
+const liveHours={0:'15:00',1:'18:00',2:'15:00',3:'15:00',4:'15:00'};
+const weekdays=['Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi','Dimanche'];
+let state=loadState();
+function dateKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))|0;return Math.abs(h)}
+function pick(type,exclude=[]){const arr=pool[type].filter(x=>!exclude.includes(x.title));const choices=arr.length?arr:pool[type];return structuredClone(choices[Math.floor(Math.random()*choices.length)])}
+function makeIdea(type){const x=pick(type,state.history.map(h=>h.title));return {id:crypto.randomUUID?crypto.randomUUID():String(Date.now()+Math.random()),type,...x,done:false}}
+function loadState(){try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.date===dateKey()&&Array.isArray(s.ideas))return s}catch(e){}return freshState()}
+function freshState(){const s={date:dateKey(),ideas:[],history:[],done:[]};for(let i=0;i<2;i++)s.ideas.push(makeIdeaSafe('IRL',s));for(let i=0;i<3;i++)s.ideas.push(makeIdeaSafe('Gaming',s));return s}
+function makeIdeaSafe(type,s){const x=pick(type,(s.history||[]).map(h=>h.title));return {id:String(Date.now()+Math.random()),type,...x,done:false}}
+function save(){localStorage.setItem(KEY,JSON.stringify(state));renderIdeas();renderStats()}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2300)}
+function completeIdea(id){const i=state.ideas.find(x=>x.id===id);if(!i)return;state.history.push({title:i.title,type:i.type,completedAt:new Date().toISOString()});state.done.push(i.title);const replacement=makeIdea(i.type);state.ideas=state.ideas.map(x=>x.id===id?replacement:x);save();toast('Idée terminée : une nouvelle idée '+(i.type==='IRL'?'IRL':'gaming')+' est prête.')}
+function renderIdeas(){const el=document.getElementById('ideas');el.innerHTML=state.ideas.map(i=>`<article class="idea"><span class="tag ${i.type==='IRL'?'irl':''}">${i.type==='IRL'?'IRL':'GAMING · VALORANT'}</span><h3>${esc(i.title)}</h3><p><strong>Accroche :</strong> ${esc(i.hook)}</p><p><strong>Déroulement :</strong> ${esc(i.script)}</p><p><strong>Tournage :</strong> ${esc(i.shoot)}</p><p><strong>Montage :</strong> ${esc(i.edit)}</p><footer><label><input type="checkbox" onchange="completeIdea('${i.id}')"> Terminé — proposer une autre idée</label></footer></article>`).join('')}
+function renderStats(){document.getElementById('remaining').textContent=state.ideas.length;document.getElementById('done').textContent=state.done.length;document.getElementById('progress').style.width=Math.min(100,state.done.length/5*100)+'%';const now=new Date();let day=(now.getDay()+6)%7;let next=day;if(day>4)next=0;document.getElementById('nextLive').textContent=liveHours[next]||'Lundi';document.getElementById('nextLiveDay').textContent=day>4?'Lundi prochain':(day===next?'Aujourd’hui':weekdays[next])}
+function renderWeek(){const el=document.getElementById('week');el.innerHTML=weekdays.map((d,i)=>{let content='';if(i<5)content=`<div class="event live">🎥 Live<br><strong>${liveHours[i]}</strong><br>4 heures</div><div class="event">✦ Préparer 1 idée IRL + 1 gaming</div>`;else content='<div class="event prod">🎬 Tournage / montage</div><div class="event">Préparer les contenus</div>';return `<div class="day"><strong>${d}</strong><small>${i<5?'Jour de live':'Production, sans live'}</small>${content}</div>`}).join('')}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function show(page){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id==='page-'+page));document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('active',b.dataset.page===page));document.getElementById('topTitle').textContent=page==='ideas'?'Tes idées du jour':'Ton calendrier de production'}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>show(b.dataset.page));
+document.getElementById('refreshBtn').onclick=()=>{state.ideas=state.ideas.map(i=>makeIdea(i.type));save();toast('Tes idées ont été renouvelées.')};
+document.getElementById('resetWeek').onclick=()=>{renderWeek();toast('Calendrier réaffiché.')};
+renderIdeas();renderStats();renderWeek();
+</script></body></html>
